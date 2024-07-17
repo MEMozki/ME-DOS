@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MS-DOS Emulator | By: MEMozki</title>
+    <title>RE-DOS</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="terminal">
         <div id="output"></div>
         <div id="input-line">
-            <span id="prompt">C:\></span><input type="text" id="input" autofocus>
+            <span class="prompt">C:\></span>
+            <input type="text" id="command-input" autofocus>
         </div>
+        <button id="reset-button">Restart</button>
     </div>
     <script src="scripts.js"></script>
 </body>
