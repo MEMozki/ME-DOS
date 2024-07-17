@@ -1,38 +1,52 @@
 body {
-    background-color: black;
-    color: green;
-    font-family: 'Courier New', Courier, monospace;
     margin: 0;
     padding: 0;
+    background-color: black;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 #terminal {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
     height: 100vh;
     padding: 10px;
     box-sizing: border-box;
 }
 
 #output {
-    white-space: pre-wrap;
+    flex: 1;
     overflow-y: auto;
-    height: calc(100% - 30px);
 }
 
 #input-line {
     display: flex;
 }
 
-#prompt {
-    padding-right: 5px;
+.prompt {
+    margin-right: 5px;
 }
 
-#input {
-    flex-grow: 1;
-    border: none;
+#command-input {
     background: black;
-    color: green;
+    color: white;
+    border: none;
+    outline: none;
+    width: 100%;
     font-family: 'Courier New', Courier, monospace;
     font-size: 16px;
-    outline: none;
+}
+
+#reset-button {
+    background: #444;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    align-self: flex-end;
+}
+
+#reset-button:hover {
+    background: #666;
 }
