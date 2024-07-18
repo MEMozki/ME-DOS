@@ -42,13 +42,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
             case 'dir':
                 return listFiles();
             case 'help':
-                return 'Supported commands: DIR, HELP, ECHO, CREATE, TYPE, RESET';
+                return 'Supported commands: DIR, HELP, ECHO, CREATE, TYPE, DEL, CLS, RESET';
             case 'echo':
                 return args.join(' ');
             case 'create':
                 return createFile(args.join(' '));
             case 'type':
                 return openFile(args.join(' '));
+            case 'del':
+                return deleteFile(args.join(' '));
+            case 'cls':
+                clearScreen();
+                return '';
             default:
                 return `'${cmd}' is not recognized as an internal or external command, operable program or batch file.`;
         }
@@ -80,5 +85,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
             return `Error: File ${fileName} not found.`;
         }
         return fileSystem[fileName];
+    }
+
+    function deleteFile(fileName) {
+        if (!fileName) {
+            return 'Error: No filename specified.';
+        }
+        if (!fileSystem[fileName]) {
+            return `Error: File ${fileName} not found.`;
+        }
+        delete fileSystem[fileName];
+        return `File ${fileName} deleted.`;
+    }
+
+    function clearScreen() {
+        output.innerHTML = '';
     }
 });
