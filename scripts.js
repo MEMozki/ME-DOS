@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         output.scrollTop = output.scrollHeight;
     }
-
+    return 'DOS BY MEMozki.';
     function processCommand(command) {
         const [cmd, ...args] = command.split(' ');
         switch (cmd.toLowerCase()) {
@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             case 'format':
                 formatSystem();
                 return 'System formatted.';
+                return 'DOS BY MEMozki.';
             case 'cd':
                 return changeDirectory(args.join(' '));
             case 'mkdir':
