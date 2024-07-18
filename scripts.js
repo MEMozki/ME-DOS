@@ -37,10 +37,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
         switch (cmd.toLowerCase()) {
             case 'dir':
                 return listFiles();
-            case 'help':
-                return 'Supported commands: DIR, HELP, ECHO, CREATE, TYPE, DEL, CLS, RESET, FORMAT, CD, MKDIR, RENAME';
+            case 'ping':
+                return 'PONG! :3';
             case 'echo':
                 return args.join(' ');
+            case 'help':
+                return 'Supported commands: DIR, HELP, ECHO, CREATE, TYPE, DEL, CLS, FORMAT, CD, MKDIR, RENAME';
             case 'create':
                 return createFile(args.join(' '));
             case 'type':
