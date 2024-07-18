@@ -43,6 +43,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 return listFiles();
             case 'help':
                 return 'Supported commands: DIR, HELP, ECHO, CREATE, TYPE, DEL, CLS, RESET';
+            case 'ping':
+                return 'PONG! :3';
             case 'echo':
                 return args.join(' ');
             case 'create':
