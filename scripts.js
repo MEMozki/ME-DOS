@@ -70,12 +70,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 return 'The ATTRIB command is not implemented in this emulator.';
             case 'ping':
                 return pingServer(args[0]);
-            case 'hidden':
-                return 'You found a hidden command!';
+            case 'B':
+                return 'Barley.';
             case 'secret':
-                return 'This is a secret command!';
-            case 'easteregg':
-                return 'Congratulations! You discovered an Easter egg!';
+                return 'Yay)';
+            case 'egg':
+                return 'YOU?????????';
             default:
                 return `'${cmd}' is not recognized as an internal or external command, operable program or batch file.`;
         }
@@ -285,7 +285,6 @@ RENAME - Rename a file or directory\n
 RMDIR - Remove a directory\n
 COPY - Copy a file\n
 MOVE - Move a file\n
-PING - Ping a server and show response time\n
     `;
         return helpMessage;
     }
