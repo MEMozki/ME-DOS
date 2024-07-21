@@ -285,7 +285,7 @@ RENAME - Rename a file or directory\n
 RMDIR - Remove a directory\n
 COPY - Copy a file\n
 MOVE - Move a file\n
-PING - Ping a server and show response time
+PING - Ping a server and show response time\n
     `;
         return helpMessage;
     }
