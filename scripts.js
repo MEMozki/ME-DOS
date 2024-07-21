@@ -259,8 +259,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const startupMessage = `
 Create: MEMozki | Tg: MEMozkii
 The virtual machine is running.
-
-C:\\>_`;
+`;
         const startupLines = startupMessage.split('\n');
         startupLines.forEach(line => {
             const div = document.createElement('div');
@@ -271,21 +270,21 @@ C:\\>_`;
 
     function showHelp() {
         const helpMessage = `
-Supported commands:
-DIR - List files and directories
-HELP - Show this help message
-ECHO - Display messages
-CREATE - Create a file
-TYPE - Display file contents
-DEL - Delete a file or directory
-CLS - Clear the screen
-FORMAT - Format the system
-CD - Change directory
-MKDIR - Create a directory
-RENAME - Rename a file or directory
-RMDIR - Remove a directory
-COPY - Copy a file
-MOVE - Move a file
+Supported commands:\n
+DIR - List files and directories\n
+HELP - Show this help message\n
+ECHO - Display messages\n
+CREATE - Create a file\n
+TYPE - Display file contents\n
+DEL - Delete a file or directory\n
+CLS - Clear the screen\n
+FORMAT - Format the system\n
+CD - Change directory\n
+MKDIR - Create a directory\n
+RENAME - Rename a file or directory\n
+RMDIR - Remove a directory\n
+COPY - Copy a file\n
+MOVE - Move a file\n
 PING - Ping a server and show response time
     `;
         return helpMessage;
