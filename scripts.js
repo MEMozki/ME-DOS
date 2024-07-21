@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 return 'The ATTRIB command is not implemented in this emulator.';
             case 'ping':
                 return pingServer(args[0]);
-            case 'B':
+            case 'BE':
                 return 'Barley.';
             case 'secret':
                 return 'Yay)';
