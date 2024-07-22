@@ -27,10 +27,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
         output.appendChild(outputLine);
 
         const result = document.createElement('div');
-        result.textContent = processCommand(command);
-        output.appendChild(result);
-
-        output.scrollTop = output.scrollHeight;
+        const commandResult = processCommand(command);
+        if (commandResult instanceof Promise) {
+            commandResult.then(res => {
+                result.textContent = res;
+                output.appendChild(result);
+                output.scrollTop = output.scrollHeight;
+            });
+        } else {
+            result.textContent = commandResult;
+            output.appendChild(result);
+            output.scrollTop = output.scrollHeight;
+        }
     }
 
     function processCommand(command) {
@@ -69,13 +77,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
             case 'attrib':
                 return 'The ATTRIB command is not implemented in this emulator.';
             case 'ping':
-                return pingServer(args[0]);
-            case 'BE':
-                return 'Barley.';
+                return pingServer();
+            case 'hidden':
+                return 'You found a hidden command!';
             case 'secret':
-                return 'Yay)';
-            case 'egg':
-                return 'YOU?????????';
+                return 'This is a secret command!';
+            case 'easteregg':
+                return 'Congratulations! You discovered an Easter egg!';
             default:
                 return `'${cmd}' is not recognized as an internal or external command, operable program or batch file.`;
         }
@@ -237,18 +245,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
         return `Moved ${source} to ${destination}.`;
     }
 
-    function pingServer(server) {
-        if (!server) {
-            return 'Error: No server specified.';
-        }
+    async function pingServer() {
+        const server = 'github.io';
         const start = Date.now();
-        return new Promise(resolve => {
-            setTimeout(() => {
-                const end = Date.now();
-                const time = end - start;
-                resolve(`Reply from ${server}: time=${time}ms`);
-            }, Math.random() * 1000);
-        });
+        try {
+            const response = await fetch(`https://${server}`, { mode: 'no-cors' });
+            const end = Date.now();
+            const time = end - start;
+            return `Reply from ${server}: time=${time}ms`;
+        } catch (error) {
+            return `Ping request could not find host ${server}. Please check the name and try again.`;
+        }
     }
 
     function getCurrentDirectory() {
@@ -257,7 +264,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     function showStartupMessage() {
         const startupMessage = `
-Create: MEMozki | Tg: MEMozkii
+MEMzDOS (2.3) | By: MEMozki
 The virtual machine is running.
 `;
         const startupLines = startupMessage.split('\n');
@@ -270,22 +277,23 @@ The virtual machine is running.
 
     function showHelp() {
         const helpMessage = `
-Supported commands:\n
-DIR - List files and directories\n
-HELP - Show this help message\n
-ECHO - Display messages\n
-CREATE - Create a file\n
-TYPE - Display file contents\n
-DEL - Delete a file or directory\n
-CLS - Clear the screen\n
-FORMAT - Format the system\n
-CD - Change directory\n
-MKDIR - Create a directory\n
-RENAME - Rename a file or directory\n
-RMDIR - Remove a directory\n
-COPY - Copy a file\n
-MOVE - Move a file\n
-    `;
+Supported commands:
+DIR - List files and directories
+HELP - Show this help message
+ECHO - Display messages
+CREATE - Create a file
+TYPE - Display file contents
+DEL - Delete a file or directory
+CLS - Clear the screen
+FORMAT - Format the system
+CD - Change directory
+MKDIR - Create a directory
+RENAME - Rename a file or directory
+RMDIR - Remove a directory
+COPY - Copy a file
+MOVE - Move a file
+PING - Ping a server and show response time
+    `.trim().split('\n').join('\n');
         return helpMessage;
     }
 
