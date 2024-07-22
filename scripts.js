@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     function showStartupMessage() {
         const startupMessage = `
-MEMzDOS (2.3) | By: MEMozki
+MEMzDOS (2.3.2) | By: MEMozki
 The virtual machine is running.
 `;
         const startupLines = startupMessage.split('\n');
