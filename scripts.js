@@ -252,9 +252,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
             const response = await fetch(`https://${server}`, { mode: 'no-cors' });
             const end = Date.now();
             const time = end - start;
-            return `Reply from ${server}: time=${time}ms`;
+            return `Reply from: time=${time}ms`;
         } catch (error) {
-            return `Ping request could not find host ${server}. Please check the name and try again.`;
+            return `Ping request could not find host Please check the name and try again.`;
         }
     }
 
